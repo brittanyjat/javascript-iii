@@ -11,7 +11,12 @@ var carDetails = {
   year: 1994
 }
 
-// CODE HERE
+var { color
+    , make
+    , model
+    , year
+    } = carDetails;
+
 
 
 // ========================
