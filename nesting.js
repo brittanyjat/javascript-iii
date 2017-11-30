@@ -36,9 +36,18 @@ var employees = [{
 //  2. If the employee's first name is Lorie, change her department to 'HR'.
 //  3. Return the updated employee array.
 
-// Code here
+function employeeUpdater(){
+  for (var i = 0; i<employees.length; i++){
+    if (employees[i].firstName === "Theo"){
+      employees.splice(i, 1);
+    }if (employees[i].firstName === "Lorie"){
+      employees[i].department = "HR";
+    }
+    }return employees
+  }
 
-
+employeeUpdater()
+console.log(employees)
 
 
 
@@ -54,11 +63,18 @@ var employees = [{
 
 var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 
-// Code here
-
-
-
-
+function removeDuplicates(){
+  for (var i = 0; i<workplaceAccidents.length; i++){
+    for (var x = i + 1; x<workplaceAccidents.length; x++){
+      if (workplaceAccidents[i] === workplaceAccidents[x]){
+        workplaceAccidents.splice(x,1);
+      }
+    }
+  }
+  console.log(workplaceAccidents);
+  console.log('workPlaceAccidents')
+  return workplaceAccidents
+}
 
 
 
@@ -122,8 +138,11 @@ var myCar = {
   ]
 }
 
-// Code here
+function recordCleaner(){
+  for (var key in myCar){
 
+  }
+}
 
 
 
@@ -142,7 +161,6 @@ var myCar = {
 // 4. Return the modified numsArr.
 
 var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
-
 
 
 
