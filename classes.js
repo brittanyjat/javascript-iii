@@ -66,9 +66,6 @@ class Manager extends Employee{
 
 
 
-
-
-
 /*
 Manager for Widget Co. get promoted when they get more employees, and get a bonus when they fire employees.
 Progressive Managers have all the same properties as the manager, but
@@ -87,7 +84,37 @@ When employees are added or removed we need to check and update their title.  Th
 Everytime they fire an employee they get $100 added to their bonus.
 
 call your class ProgressiveManager
+
 */
+
+class ProgressiveManager extends Manager {
+    constructor(first_name, last_name, email, age, reports){
+        super(first_name, last_name, email, age, reports)
+         this.title = 'Not a manager';
+         this.bonus = 0;
+
+    }
+    updatetitle(employee_count)
+    {
+        if (employee_count === 0) { this.title = 'Not a Manager'; }
+        if (employee_count >= 1 && employee_count <= 3){ this.title = 'Barely Manager'; }
+        if (employee_count >= 4 && employee_count <= 10){ this.title = 'Mostly Manager'; }
+        if (employee_count >= 11 && employee_count <= 50){ this.title = 'Manager'; }
+        if (employee_count >= 51 && employee_count <= 100){ this.title = 'Manager Plus'; }
+        if (employee_count >= 101){ this.title = 'Bestest Manager'; }
+    }
+    hire(employee){
+        super.hire(employee);
+        this.updatetitle(this.reports.length);
+    }
+    fire(index){
+        super.fire(index);
+        this.updatetitle(this.reports.length);
+        this.bonus = this.bonus + 100;
+    }
+
+    
+}
 
 
 
@@ -114,3 +141,27 @@ It can :
       It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
 
 */
+
+class Machine{
+    constructor(){
+        this.widgets_made_count = 0;
+        this.wear_and_tear_count = 0;
+        this.needs_reboot = false;
+    }
+    makeWidgets(count){
+        this.widgets_made_count += count;
+        this.wear_and_tear_count = Math.floor(this.widgets_made_count / 50);
+        console.log(this.wear_and_tear_count);
+    }
+    fixMachine(){
+        this.needs_reboot = true;
+    }
+    reboot(){
+        var the_machine = this;
+        
+        return function() {
+            the_machine.wear_and_tear_count -= 10;
+            the_machine.needs_reboot = false;
+        }
+    }
+}
